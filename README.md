@@ -1,7 +1,7 @@
-# [GSE Subtheme(https://github.com/SU-SWS/gse_subtheme)
+# [GSE Subtheme](https://github.com/SU-SWS/gse_subtheme)
 ##### Version: 8.x-1.0-dev
 
-Changelog: [Changelog.txt](CHANGELOG.txt)
+Changelog: [Changelog.txt](CHANGELOG.md)
 
 Description
 ---
