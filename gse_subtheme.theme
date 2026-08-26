@@ -20,3 +20,25 @@ function gse_subtheme_theme_suggestions_block_alter(array &$suggestions, array $
     $suggestions[] = 'block__stanford_basic_search';
   }
 }
+
+/**
+ * Implements hook_preprocess_pattern_localfooter().
+ *
+ * The local footer lockup should always be the GSE logo-only lockup,
+ * regardless of what is configured on the site's local footer settings.
+ * This runs after stanford_profile_helper_preprocess_pattern_localfooter()
+ * and overrides its output.
+ */
+function gse_subtheme_preprocess_pattern_localfooter(&$variables) {
+  $theme_path = \Drupal::service('extension.list.theme')->getPath('gse_subtheme');
+
+  $variables['use_logo'] = '0';
+  $variables['custom_lockup'] = TRUE;
+  $variables['lockup_option'] = 'su-lockup--option-none';
+  $variables['site_logo'] = '/' . $theme_path . '/src/assets/png/GSE-hor-logo-white.png';
+  $variables['line1'] = 'Stanford Graduate School of Education';
+  $variables['line2'] = '';
+  $variables['line3'] = '';
+  $variables['line4'] = '';
+  $variables['line5'] = '';
+}
