@@ -22,19 +22,24 @@ function gse_subtheme_theme_suggestions_block_alter(array &$suggestions, array $
 }
 
 /**
- * Implements hook_preprocess_pattern_localfooter().
+ * Implements hook_preprocess_config_pages__stanford_local_footer().
  *
  * The local footer lockup should always be the GSE logo-only lockup,
  * regardless of what is configured on the site's local footer settings.
- * This runs after stanford_profile_helper_preprocess_pattern_localfooter()
- * and overrides its output.
+ * stanford_basic's config-pages--stanford-local-footer.html.twig reads
+ * custom_lockup/lockup_option/use_default_logo/site_logo/line1-5 straight
+ * off the config_pages fields rather than from preprocess variables, so
+ * setting them here alone has no effect. The variables set here are
+ * consumed by gse_subtheme's own override of that template
+ * (templates/config-pages--stanford-local-footer.html.twig), which is
+ * what actually forces the GSE lockup.
  */
-function gse_subtheme_preprocess_pattern_localfooter(&$variables) {
+function gse_subtheme_preprocess_config_pages__stanford_local_footer(&$variables) {
   $theme_path = \Drupal::service('extension.list.theme')->getPath('gse_subtheme');
 
-  $variables['use_logo'] = '0';
+  $variables['use_default_logo'] = FALSE;
   $variables['custom_lockup'] = TRUE;
-  $variables['lockup_option'] = 'su-lockup--option-none';
+  $variables['lockup_option'] = 'none';
   $variables['site_logo'] = '/' . $theme_path . '/src/assets/png/GSE-hor-logo-white.png';
   $variables['line1'] = 'Stanford Graduate School of Education';
   $variables['line2'] = '';
