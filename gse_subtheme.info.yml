@@ -2,7 +2,7 @@ name: GSE Subtheme
 type: theme
 description: 'GSE Subtheme.'
 package: Stanford
-version: 8.x-1.0-dev
+version: 1.0.0
 core_version_requirement: ^10 || ^11
 base theme: stanford_basic
 libraries:
